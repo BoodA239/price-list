@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة أسعار الموبايلات - عبادالرحمان ستور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        .admin-col { display: none; }
+        .show-admin .admin-col { display: table-cell; }
+
+        @media print {
+            .no-print { display: none !important; }
+            .admin-col { display: none !important; }
+            body { background-color: white; padding: 0; }
+            .container { max-width: 100% !important; width: 100% !important; box-shadow: none !important; border: none !important; }
+            table { font-size: 11px; width: 100% !important; }
+            th { background-color: #1e3a8a !important; color: white !important; -webkit-print-color-adjust: exact; }
+            .brand-header { -webkit-print-color-adjust: exact; }
+            footer { position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 10px; color: #666; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+
+<div class="container mx-auto bg-white p-6 rounded-xl shadow-xl border border-gray-100 max-w-6xl">
+    
+    <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-blue-900 pb-6 mb-6 gap-4">
+        <div class="text-center md:text-right">
+            <h1 class="text-4xl font-extrabold text-blue-900 mb-1">عبادالرحمان ستور</h1>
+            <p class="text-gray-600 font-bold text-lg">أحدث الموبايلات - كاش وقسط (2026)</p>
+            <p class="text-sm text-gray-500">كفرحجازي - بجوار مستودع الأنابيب - الجيزة</p>
+        </div>
+        <div class="text-center space-y-2">
+            <div class="bg-blue-900 text-white px-8 py-2 rounded-lg font-black text-2xl tracking-wider">PRICE LIST 2026</div>
+            <p class="text-blue-700 font-bold italic">للتواصل: 01070028011</p>
+            <div class="flex gap-2 justify-center no-print">
+                <button onclick="toggleAdminCols()" id="toggleBtn" class="bg-purple-600 text-white px-4 py-2 rounded shadow hover:bg-purple-700 transition font-bold text-sm">إظهار وضع الإدارة</button>
+                <button onclick="window.print()" class="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 transition font-bold text-sm">طباعة</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+        <table class="w-full text-center" id="priceTable">
+            <thead class="bg-blue-900 text-white">
+                <tr>
+                    <th class="p-3 border-l border-blue-800">الموديل</th>
+                    <th class="p-3 border-l border-blue-800">المواصفات</th>
+                    <th class="p-3 border-l border-blue-800 admin-col">سعر المورد</th>
+                    <th class="p-3 border-l border-blue-800 no-print">سعر القسط</th>
+                    <th class="p-3 border-l border-blue-800">سعر الكاش</th>
+                    <th class="p-3 border-l border-blue-800">المقدم</th>
+                    <th class="p-3 border-l border-blue-800">القسط الشهري</th>
+                    <th class="p-3 admin-col">إجراء</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+        <h2 class="text-xl font-bold mb-4">تعديل البيانات</h2>
+        <p id="modalDeviceName" class="mb-4 font-bold text-blue-800 border-b pb-2"></p>
+
+        <div class="space-y-3">
+            <div>
+                <label class="block text-sm font-bold mb-1 text-purple-700">سعر المورد:</label>
+                <input type="number" id="modalPriceSubInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-purple-500" />
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-1 text-green-700">سعر الكاش:</label>
+                <input type="number" id="modalCashInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-500" />
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-1">المقدم:</label>
+                <input type="number" id="modalDownPaymentInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-sm font-bold mb-1 text-red-600">القسط الشهري:</label>
+                    <input type="number" id="modalMonthlyInput" class="w-full border p-2 rounded border-red-200 focus:ring-2 focus:ring-red-500" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-1 text-orange-600">الإجمالي بالقسط:</label>
+                    <input type="number" id="modalInstallmentInput" class="w-full border p-2 rounded border-orange-200 focus:ring-2 focus:ring-orange-500" />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-2 mt-6">
+            <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">إلغاء</button>
+            <button onclick="saveModal()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">حفظ البيانات</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const brandColors = {
+    'SAMSUNG': '#1e40af', 'OPPO': '#16a34a', 'REALME': '#f59e0b',
+    'XIAOMI': '#ef4444', 'VIVO': '#6366f1', 'HONOR': '#0ea5e9', 'Infinix' : '#059669'
+};
+
+// البيانات الأولية (سعر المورد)
+let devices = [
+    { brand: 'SAMSUNG', model: 'Galaxy A36 5G', ram: '8GB', rom: '256GB', priceSub: 15410 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36 5G', ram: '6GB', rom: '128GB', priceSub: 15410 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26 4G', ram: '8GB', rom: '256GB', priceSub: 10436 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26 4G', ram: '6GB', rom: '128GB', priceSub: 10436 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '8GB', rom: '256GB', priceSub: 9363 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '6GB', rom: '128GB', priceSub: 9363 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '4GB', rom: '128GB', priceSub: 9363 },
+    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 7564 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB/6GB', rom: '128GB', priceSub: 7873 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB/6GB', rom: '64GB', priceSub: 7873 },
+    { brand: 'OPPO', model: 'Reno 14 5G', ram: '12GB', rom: '256GB', priceSub: 24536 },
+    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 18445 },
+    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 13817 },
+    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12000 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 8627 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7363 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6091 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 6091 },
+    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6091 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6091 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 6091 },
+    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 15000 },
+    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 16461 },
+    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18455 },
+    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9500 },
+    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 7818 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 5773 },
+    { brand: 'HONOR', model: 'X7c', ram: '8GB', rom: '256GB', priceSub: 7682 },
+    { brand: 'HONOR', model: 'X8a / X8c', ram: '6/8GB', rom: '128/256GB', priceSub: 6982 },
+    { brand: 'HONOR', model: '500', ram: '12GB', rom: '256GB', priceSub: 17086 },
+    { brand: 'HONOR', model: '500 Pro', ram: '12GB', rom: '256GB', priceSub: 22932 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro+ 5G', ram: '12GB', rom: '256GB', priceSub: 19608 },
+    { brand: 'XIAOMI', model: 'Poco X7 Pro 5G', ram: '12GB', rom: '512GB', priceSub: 18080 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 8908 },
+    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 7678 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6566 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 5818 },
+    { brand: 'XIAOMI', model: 'Redmi 13/14C', ram: '8GB', rom: '128GB', priceSub: 6243 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4815 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4305 },
+    { brand: 'VIVO', model: 'Y03', ram: '4GB', rom: '64GB', priceSub: 3999 },
+    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '128GB', priceSub: 4927 },
+    { brand: 'VIVO', model: 'Y19s', ram: '6GB', rom: '128GB', priceSub: 6545 },
+    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '256GB', priceSub: 7718 },
+    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '256GB', priceSub: 8173 },
+    { brand: 'VIVO', model: 'V40 Lite 4G', ram: '8GB', rom: '256GB', priceSub: 13131 },
+    { brand: 'VIVO', model: 'V50 Lite 4G', ram: '8GB', rom: '128GB', priceSub: 9817 },
+    { brand: 'VIVO', model: 'V50 Lite 5G', ram: '12GB', rom: '256GB', priceSub: 14536 },
+    { brand: 'VIVO', model: 'V50 AI 5G', ram: '12GB', rom: '256GB', priceSub: 22185 },
+    { brand: 'VIVO', model: 'V60 5G', ram: '12GB', rom: '512GB', priceSub: 23090 },
+    { brand: 'REALME', model: 'Note 60x', ram: '3GB', rom: '64GB', priceSub: 4181 },
+    { brand: 'REALME', model: 'Note 60x', ram: '4GB', rom: '128GB', priceSub: 4817 },
+    { brand: 'REALME', model: 'Note 70', ram: '4GB', rom: '128GB', priceSub: 5454 },
+    { brand: 'REALME', model: 'C71', ram: '4GB', rom: '128GB', priceSub: 5999 },
+    { brand: 'REALME', model: 'C71', ram: '6GB', rom: '128GB', priceSub: 6363 },
+    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '128GB', priceSub: 7726 },
+    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '256GB', priceSub: 8635 },
+    { brand: 'REALME', model: 'C75X', ram: '6GB', rom: '128GB', priceSub: 6817 },
+    { brand: 'REALME', model: 'C75X', ram: '8GB', rom: '256GB', priceSub: 8181 },
+    { brand: 'REALME', model: 'C85 PRO', ram: '8GB', rom: '256GB', priceSub: 10908 },
+    { brand: 'REALME', model: '14t 5G', ram: '8GB', rom: '256GB', priceSub: 12726 },
+    { brand: 'REALME', model: '14 5G', ram: '12GB', rom: '256GB', priceSub: 16363 },
+    { brand: 'REALME', model: '15t 5G', ram: '8GB', rom: '256GB', priceSub: 13272 },
+    { brand: 'REALME', model: '15t 5G', ram: '12GB', rom: '256GB', priceSub: 15090 },
+    { brand: 'REALME', model: '15 5G', ram: '12GB', rom: '256GB', priceSub: 18181 },
+    { brand: 'REALME', model: '15 Pro 5G', ram: '12GB', rom: '256GB', priceSub: 24545 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3150 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 3568 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '12GB (6+6)', rom: '128GB', priceSub: 4545 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '16GB (8+8)', rom: '256GB', priceSub: 5409 },
+    { brand: 'Infinix', model: 'HOT 60 5G', ram: '12GB (6+6)', rom: '128GB', priceSub: 6091 },
+    { brand: 'Infinix', model: 'HOT 60 Pro', ram: '16GB (8+8)', rom: '256GB', priceSub: 7441 },
+    { brand: 'Infinix', model: 'HOT 60 Pro+', ram: '16GB (8+8)', rom: '256GB', priceSub: 8864 },
+    { brand: 'Infinix', model: 'NOTE 50S 5G', ram: '16GB (8+8)', rom: '256GB', priceSub: 10573 },
+    { brand: 'Infinix', model: 'GT 30 PRO', ram: '24GB (12+12)', rom: '512GB', priceSub: 15923 }
+];
+
+// حساب الكاش الابتدائي (سعر المورد + 10%)
+devices = devices.map(d => ({ ...d, cash: Math.round(d.priceSub * 1.1) }));
+
+let currentEditIndex = null;
+
+function toggleAdminCols() {
+    const body = document.body;
+    const btn = document.getElementById('toggleBtn');
+    body.classList.toggle('show-admin');
+    if (body.classList.contains('show-admin')) {
+        btn.innerText = "إخفاء وضع الإدارة";
+        btn.classList.replace('bg-purple-600', 'bg-red-600');
+    } else {
+        btn.innerText = "إظهار وضع الإدارة";
+        btn.classList.replace('bg-red-600', 'bg-purple-600');
+    }
+}
+
+function calculateAutoValues(cashPrice, downPayment = null) {
+    if (!cashPrice) return { downPayment: 0, installmentPrice: 0, monthly: 0 };
+    if (downPayment === null) downPayment = Math.round(cashPrice * 0.3);
+    const remaining = cashPrice - downPayment;
+    const interest = remaining * 0.35;
+    const installmentPrice = Math.round(cashPrice + interest);
+    const monthly = Math.round((installmentPrice - downPayment) / 10);
+    return { downPayment, installmentPrice, monthly };
+}
+
+function renderTable() {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    let currentBrand = '';
+
+    devices.sort((a, b) => a.brand.localeCompare(b.brand)).forEach((d, index) => {
+        if (d.brand !== currentBrand) {
+            currentBrand = d.brand;
+            const headerRow = document.createElement('tr');
+            headerRow.className = 'brand-header text-white font-bold';
+            headerRow.style.backgroundColor = brandColors[currentBrand] || '#1e40af';
+            headerRow.innerHTML = `<td colspan="8" class="p-2 text-right pr-6">${currentBrand}</td>`;
+            tbody.appendChild(headerRow);
+        }
+
+        const auto = calculateAutoValues(d.cash, d.downPayment);
+        const finalInstallment = d.customInstallment || auto.installmentPrice;
+        const finalMonthly = d.customMonthly || auto.monthly;
+        const finalDown = d.downPayment || auto.downPayment;
+
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-gray-50 border-b border-gray-100 transition';
+        row.innerHTML = `
+            <td class="p-3 font-bold text-gray-800">${d.model}</td>
+            <td class="p-3 text-gray-600 text-sm">${d.ram} / ${d.rom}</td>
+            <td class="p-3 font-bold text-purple-700 admin-col">${d.priceSub.toLocaleString()}</td>
+            <td class="p-3 font-bold text-orange-600 no-print">${finalInstallment.toLocaleString()}</td>
+            <td class="p-3 font-bold text-green-700">${d.cash.toLocaleString()}</td>
+            <td class="p-3 font-bold text-blue-700">${finalDown.toLocaleString()}</td>
+            <td class="p-3 font-bold text-red-600">${finalMonthly.toLocaleString()}</td>
+            <td class="p-3 admin-col">
+                <button onclick="openModal(${index})" class="bg-blue-50 text-blue-600 px-3 py-1 rounded border border-blue-200 hover:bg-blue-600 hover:text-white transition">تعديل</button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function openModal(index) {
+    currentEditIndex = index;
+    const device = devices[index];
+    const auto = calculateAutoValues(device.cash, device.downPayment);
+    
+    document.getElementById('modalDeviceName').innerText = `${device.brand} - ${device.model}`;
+    document.getElementById('modalPriceSubInput').value = device.priceSub;
+    document.getElementById('modalCashInput').value = device.cash;
+    document.getElementById('modalDownPaymentInput').value = device.downPayment || auto.downPayment;
+    document.getElementById('modalInstallmentInput').value = device.customInstallment || auto.installmentPrice;
+    document.getElementById('modalMonthlyInput').value = device.customMonthly || auto.monthly;
+    
+    document.getElementById('editModal').classList.replace('hidden', 'flex');
+}
+
+function closeModal() {
+    document.getElementById('editModal').classList.replace('flex', 'hidden');
+}
+
+function saveModal() {
+    devices[currentEditIndex].priceSub = Number(document.getElementById('modalPriceSubInput').value);
+    devices[currentEditIndex].cash = Number(document.getElementById('modalCashInput').value); // حفظ السعر المدخل يدوياً
+    devices[currentEditIndex].downPayment = Number(document.getElementById('modalDownPaymentInput').value);
+    devices[currentEditIndex].customInstallment = Number(document.getElementById('modalInstallmentInput').value);
+    devices[currentEditIndex].customMonthly = Number(document.getElementById('modalMonthlyInput').value);
+    
+    renderTable();
+    closeModal();
+}
+
+// تحديث الحسابات عند تغيير سعر المورد أو سعر الكاش
+function handlePriceChange() {
+    const priceSub = Number(document.getElementById('modalPriceSubInput').value) || 0;
+    
+    // إذا كان الحدث ناتج عن تغيير سعر المورد، نقوم بتحديث سعر الكاش تلقائياً (كقيمة مقترحة)
+    if(event.target.id === 'modalPriceSubInput') {
+        const cash = Math.round(priceSub * 1.1);
+        document.getElementById('modalCashInput').value = cash;
+    }
+
+    const currentCash = Number(document.getElementById('modalCashInput').value) || 0;
+    const downPayment = Number(document.getElementById('modalDownPaymentInput').value) || 0;
+    
+    // إعادة حساب القسط بناءً على سعر الكاش الحالي (سواء كان تلقائياً أو معدلاً يدوياً)
+    const auto = calculateAutoValues(currentCash, downPayment);
+    document.getElementById('modalInstallmentInput').value = auto.installmentPrice;
+    document.getElementById('modalMonthlyInput').value = auto.monthly;
+}
+
+document.getElementById('modalPriceSubInput').addEventListener('input', handlePriceChange);
+document.getElementById('modalCashInput').addEventListener('input', handlePriceChange);
+document.getElementById('modalDownPaymentInput').addEventListener('input', handlePriceChange);
+
+window.onload = renderTable;
+</script>
+</body>
+</html>
