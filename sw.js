@@ -1,4 +1,4 @@
-const CACHE_NAME = 'price-list-v1';
+const CACHE_NAME = 'price-list-v2';
 const FILES_TO_CACHE = [
   './',
   './index.html',
@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
   './icon-192.png',
   './icon-512.png'
 ];
+
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -30,3 +31,4 @@ self.addEventListener('fetch', event => {
     caches.match(event.request).then(res => res || fetch(event.request))
   );
 });
+
