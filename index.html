@@ -51,7 +51,7 @@
                     <th class="p-3 border-l border-blue-800">المواصفات</th>
                     <th class="p-3 border-l border-blue-800 admin-col">سعر المورد</th>
                     <th class="p-3 border-l border-blue-800">سعر الكاش</th>
-                    <th class="p-3 border-l border-blue-800 no-print">سعر القسط</th>
+                    <th class="p-3 border-l border-blue-800 no-print">إجمالي القسط</th>
                     <th class="p-3 border-l border-blue-800">المقدم</th>
                     <th class="p-3 border-l border-blue-800">القسط الشهري</th>
                     <th class="p-3 admin-col">إجراء</th>
@@ -62,6 +62,7 @@
     </div>
 </div>
 
+<!-- Modal -->
 <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white rounded-lg shadow-lg w-96 p-6">
         <h2 class="text-xl font-bold mb-4">تعديل البيانات</h2>
@@ -187,52 +188,41 @@ let devices = [
     { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 4150, cash: 4700, downPayment: 1500, customMonthly: 500, customInstallment: 6500 },
     { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3650, cash: 4150, downPayment: 1500, customMonthly: 400, customInstallment: 5500 },
     ];
-    /**
- * دالة الحسابات التلقائية
- * تحسب إجمالي القسط والقسط الشهري بناءً على الفائدة على المبلغ المتبقي
- */
-function calculateAutoValues(device) {
-    // 1. تحديد سعر الكاش (يدوي أو مقترح بناءً على المورد + 10%)
-    const cash = device.cash || Math.round(device.priceSub * 1.1);
-    
-    // 2. تحديد المقدم (يدوي أو مقترح 35% من الكاش)
-    const down = device.downPayment || Math.round(cash * 0.35);
-    
-    // 3. حساب المبلغ المتبقي من الكاش
-    const remainingCash = cash - down;
-    
-    // 4. حساب إجمالي القسط (المتبقي * 1.35 لزيادة الفائدة 35% + المقدم)
-    // إذا لم يتم إدخال إجمالي قسط يدوي (customInstallment)
-    const totalInstallment = device.customInstallment || Math.round((remainingCash * 1.35) + down);
-    
-    // 5. حساب القسط الشهري (إجمالي القسط - المقدم) ÷ 10 شهور
-    // إذا لم يتم إدخال قسط شهري يدوي (customMonthly)
-    const monthly = device.customMonthly || Math.round((totalInstallment - down) / 10);
-    
-    // تعيد الدالة كائن يحتوي على كل البيانات النهائية للعرض
-    return {
-        ...device, // إرجاع كامل بيانات الموديل (Brand, Model, RAM, etc.)
-        cash: cash,
-        down: down,
-        totalInstallment: totalInstallment,
-        monthly: monthly
-    };
+
+let currentEditIndex = null;
+
+// تحميل البيانات وحساب القيم مرة واحدة
+window.onload = () => {
+    const saved = localStorage.getItem('phonePrices');
+    if (saved) devices = JSON.parse(saved);
+
+    devices.forEach(d => {
+        d.cash = d.cash ?? Math.round(d.priceSub * 1.1);
+        d.down = d.down ?? Math.round(d.cash * 0.35);
+        d.totalInstallment = d.customInstallment ?? Math.round((d.cash - d.down) * 1.35 + d.down);
+        d.monthly = d.customMonthly ?? Math.round((d.totalInstallment - d.down) / 10);
+    });
+
+    renderTable();
+};
+
+// حسابات تلقائية مؤقتة للـ modal
+function calculateModalValues(priceSub, cash, down) {
+    const tempCash = cash || Math.round(priceSub * 1.1);
+    const tempDown = down || Math.round(tempCash * 0.35);
+    const totalInstallment = Math.round((tempCash - tempDown) * 1.35 + tempDown);
+    const monthly = Math.round((totalInstallment - tempDown) / 10);
+    return { cash: tempCash, down: tempDown, totalInstallment, monthly };
 }
 
-/**
- * دالة عرض الجدول المحدثة لتعمل مع المنطق الجديد
- */
 function renderTable() {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
     let currentBrand = '';
 
     devices.forEach((d, index) => {
-        // تشغيل منطق الحساب على الجهاز الحالي
-        const fullData = calculateAutoValues(d);
-
-        if (fullData.brand !== currentBrand) {
-            currentBrand = fullData.brand;
+        if (d.brand !== currentBrand) {
+            currentBrand = d.brand;
             const headerRow = document.createElement('tr');
             headerRow.className = 'brand-header text-white font-bold';
             headerRow.style.backgroundColor = brandColors[currentBrand] || '#1e40af';
@@ -241,15 +231,16 @@ function renderTable() {
         }
 
         const row = document.createElement('tr');
+        row.dataset.index = index;
         row.className = 'hover:bg-gray-50 border-b border-gray-100 transition';
         row.innerHTML = `
-            <td class="p-3 font-bold text-gray-800">${fullData.model}</td>
-            <td class="p-3 text-gray-600 text-sm">${fullData.ram} / ${fullData.rom}</td>
-            <td class="p-3 font-bold text-purple-700 admin-col">${fullData.priceSub.toLocaleString()}</td>
-            <td class="p-3 font-bold text-orange-600 no-print">${fullData.totalInstallment.toLocaleString()}</td>
-            <td class="p-3 font-bold text-green-700">${fullData.cash.toLocaleString()}</td>
-            <td class="p-3 font-bold text-blue-700">${fullData.down.toLocaleString()}</td>
-            <td class="p-3 font-bold text-red-600">${fullData.monthly.toLocaleString()}</td>
+            <td class="p-3 font-bold text-gray-800">${d.model}</td>
+            <td class="p-3 text-gray-600 text-sm">${d.ram} / ${d.rom}</td>
+            <td class="p-3 font-bold text-purple-700 admin-col">${d.priceSub.toLocaleString()}</td>
+            <td class="p-3 font-bold text-green-700">${d.cash.toLocaleString()}</td>
+            <td class="p-3 font-bold text-orange-600 no-print">${d.totalInstallment.toLocaleString()}</td>
+            <td class="p-3 font-bold text-blue-700">${d.down.toLocaleString()}</td>
+            <td class="p-3 font-bold text-red-600">${d.monthly.toLocaleString()}</td>
             <td class="p-3 admin-col">
                 <button onclick="openModal(${index})" class="bg-blue-50 text-blue-600 px-3 py-1 rounded border">تعديل</button>
             </td>
@@ -258,86 +249,62 @@ function renderTable() {
     });
 }
 
-// دالة تحديث الحسابات في الـ Modal (تفاعل لحظي)
-function handlePriceChange(event) {
-    const priceSub = Number(document.getElementById('modalPriceSubInput').value) || 0;
-    
-    // تحديث سعر الكاش تلقائياً كقيمة مقترحة عند تغيير سعر المورد
-    if(event.target.id === 'modalPriceSubInput') {
-        const suggestedCash = Math.round(priceSub * 1.1);
-        document.getElementById('modalCashInput').value = suggestedCash;
-    }
-
-    const currentCash = Number(document.getElementById('modalCashInput').value) || 0;
-    const downPayment = Number(document.getElementById('modalDownPaymentInput').value) || 0;
-    
-    // إنشاء كائن مؤقت للحساب
-    const tempDevice = { cash: currentCash, downPayment: downPayment };
-    const auto = calculateAutoValues(tempDevice);
-    
-    document.getElementById('modalInstallmentInput').value = auto.totalInstallment;
-    document.getElementById('modalMonthlyInput').value = auto.monthly;
-}
-
-
-
-// إظهار/إخفاء وضع الإدارة
-function toggleAdminCols() {
-    document.body.classList.toggle('show-admin');
-}
+function toggleAdminCols() { document.body.classList.toggle('show-admin'); }
 
 function openModal(index) {
     currentEditIndex = index;
     const d = devices[index];
-    const v = calculateAutoValues(d);
     document.getElementById('modalDeviceName').innerText = d.model;
     document.getElementById('modalPriceSubInput').value = d.priceSub;
-    document.getElementById('modalCashInput').value = v.cash;
-    document.getElementById('modalDownPaymentInput').value = v.down;
-    document.getElementById('modalMonthlyInput').value = v.monthly;
-    document.getElementById('modalInstallmentInput').value = v.totalInstallment;
+    document.getElementById('modalCashInput').value = d.cash;
+    document.getElementById('modalDownPaymentInput').value = d.down;
+    document.getElementById('modalMonthlyInput').value = d.monthly;
+    document.getElementById('modalInstallmentInput').value = d.totalInstallment;
+
     document.getElementById('editModal').classList.replace('hidden', 'flex');
 }
 
 function closeModal() { document.getElementById('editModal').classList.replace('flex', 'hidden'); }
 
+function handlePriceChange() {
+    const priceSub = Number(document.getElementById('modalPriceSubInput').value) || 0;
+    const cash = Number(document.getElementById('modalCashInput').value) || 0;
+    const down = Number(document.getElementById('modalDownPaymentInput').value) || 0;
+    const vals = calculateModalValues(priceSub, cash, down);
+
+    document.getElementById('modalCashInput').value = vals.cash;
+    document.getElementById('modalDownPaymentInput').value = vals.down;
+    document.getElementById('modalInstallmentInput').value = vals.totalInstallment;
+    document.getElementById('modalMonthlyInput').value = vals.monthly;
+}
+
 function saveModal() {
-    const idx = currentEditIndex;
-    devices[idx].priceSub = Number(document.getElementById('modalPriceSubInput').value);
-    devices[idx].cash = Number(document.getElementById('modalCashInput').value);
-    devices[idx].downPayment = Number(document.getElementById('modalDownPaymentInput').value);
-    devices[idx].customMonthly = Number(document.getElementById('modalMonthlyInput').value);
-    devices[idx].customInstallment = Number(document.getElementById('modalInstallmentInput').value);
-    
+    if (currentEditIndex === null) return;
+    const d = devices[currentEditIndex];
+
+    d.priceSub = Number(document.getElementById('modalPriceSubInput').value);
+    d.cash = Number(document.getElementById('modalCashInput').value);
+    d.down = Number(document.getElementById('modalDownPaymentInput').value);
+    d.totalInstallment = Number(document.getElementById('modalInstallmentInput').value);
+    d.monthly = Number(document.getElementById('modalMonthlyInput').value);
+
     localStorage.setItem('phonePrices', JSON.stringify(devices));
-    renderTable();
+
+    const row = document.querySelector(`#tableBody tr[data-index="${currentEditIndex}"]`);
+    if (row) {
+        row.cells[2].innerText = d.priceSub.toLocaleString();
+        row.cells[3].innerText = d.cash.toLocaleString();
+        row.cells[4].innerText = d.totalInstallment.toLocaleString();
+        row.cells[5].innerText = d.down.toLocaleString();
+        row.cells[6].innerText = d.monthly.toLocaleString();
+    }
+
     closeModal();
 }
 
-window.onload = () => {
-    const saved = localStorage.getItem('phonePrices');
-    if (saved) devices = JSON.parse(saved);
-    renderTable();
-};
-
-
-</script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('Service Worker Registered'))
-        .catch(err => console.log('Service Worker Failed', err));
-    });
-  }
+['modalPriceSubInput', 'modalCashInput', 'modalDownPaymentInput'].forEach(id => {
+    document.getElementById(id).addEventListener('input', handlePriceChange);
+});
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
