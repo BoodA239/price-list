@@ -105,124 +105,99 @@ const brandColors = {
     'XIAOMI': '#ef4444', 'VIVO': '#6366f1', 'HONOR': '#0ea5e9', 'Infinix' : '#059669'
 };
 
-// البيانات الأولية (سعر المورد)
 let devices = [
-    { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '4GB', rom: '128GB', priceSub: 7250 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '6GB', rom: '128GB', priceSub: 6700 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '128GB', priceSub: 5700 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '64GB', priceSub: 4950 },
-    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 5450 },
-    
-    { brand: 'OPPO', model: 'Reno 15 5G', ram: '12GB', rom: '256GB', priceSub: 36000 },
-    { brand: 'OPPO', model: 'Reno 15F 5G', ram: '12GB', rom: '256GB', priceSub: 18150 },
-    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 17500 },
-    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 14450 },
-    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12650 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 9300 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7725 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6500 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 5500 },
-    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6375 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6550 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 5600 },
+    { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500, cash: 20500, downPayment: 6200, customMonthly: 1931, customInstallment: 25505 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000, cash: 17800, downPayment: 5400, customMonthly: 1674, customInstallment: 22140 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500, cash: 16200, downPayment: 4900, customMonthly: 1526, customInstallment: 20155 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700, cash: 14200, downPayment: 4300, customMonthly: 1337, customInstallment: 17665 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900, cash: 12200, downPayment: 3700, customMonthly: 1148, customInstallment: 15175 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325, cash: 10450, downPayment: 3200, customMonthly: 979, customInstallment: 12988 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800, cash: 8750, downPayment: 2650, customMonthly: 824, customInstallment: 10885 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '4GB', rom: '128GB', priceSub: 7250, cash: 8150, downPayment: 2450, customMonthly: 770, customInstallment: 10145 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '6GB', rom: '128GB', priceSub: 6700, cash: 7550, downPayment: 2300, customMonthly: 709, customInstallment: 9388 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '128GB', priceSub: 5700, cash: 6450, downPayment: 1950, customMonthly: 608, customInstallment: 8025 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '64GB', priceSub: 4950, cash: 5600, downPayment: 1700, customMonthly: 527, customInstallment: 6965 },
+    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 5450, cash: 6150, downPayment: 1850, customMonthly: 581, customInstallment: 7655 },
 
-    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18700 },
-    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 16150 },
-    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 11750 },
-    { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000 },
-    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800 },
-    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150 },
-    { brand: 'HONOR', model: 'ْX5c', ram: '4GB', rom: '128GB', priceSub: 5200 },
-    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500 },
+    { brand: 'OPPO', model: 'Reno 15 5G', ram: '12GB', rom: '256GB', priceSub: 36000, cash: 39900, downPayment: 12000, customMonthly: 3767, customInstallment: 49665 },
+    { brand: 'OPPO', model: 'Reno 15F 5G', ram: '12GB', rom: '256GB', priceSub: 18150, cash: 20200, downPayment: 6100, customMonthly: 1904, customInstallment: 25135 },
+    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 17500, cash: 19500, downPayment: 5900, customMonthly: 1836, customInstallment: 24260 },
+    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 14450, cash: 16100, downPayment: 4850, customMonthly: 1519, customInstallment: 20038 },
+    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12650, cash: 14100, downPayment: 4250, customMonthly: 1330, customInstallment: 17548 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 9300, cash: 10450, downPayment: 3150, customMonthly: 986, customInstallment: 13005 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7725, cash: 8700, downPayment: 2650, customMonthly: 817, customInstallment: 10818 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6500, cash: 7350, downPayment: 2200, customMonthly: 695, customInstallment: 9153 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 5500, cash: 6250, downPayment: 1900, customMonthly: 587, customInstallment: 7773 },
+    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6375, cash: 7200, downPayment: 2150, customMonthly: 682, customInstallment: 8968 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6550, cash: 7400, downPayment: 2250, customMonthly: 695, customInstallment: 9203 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 5600, cash: 6350, downPayment: 1900, customMonthly: 601, customInstallment: 7908 },
 
-    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '512GB', priceSub: 14300 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '256GB', priceSub: 12800 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 9400 },
-    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 8000 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6650 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 6150 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4850 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4300 },
+    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18700, cash: 20800, downPayment: 6250, customMonthly: 1964, customInstallment: 25893 },
+    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 16150, cash: 18000, downPayment: 5400, customMonthly: 1701, customInstallment: 22410 },
+    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 11750, cash: 13100, downPayment: 3950, customMonthly: 1235, customInstallment: 16303 },
+    { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000, cash: 12300, downPayment: 3700, customMonthly: 1161, customInstallment: 15310 },
+    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800, cash: 11000, downPayment: 3300, customMonthly: 1040, customInstallment: 13695 },
+    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850, cash: 9950, downPayment: 3000, customMonthly: 938, customInstallment: 12383 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700, cash: 7550, downPayment: 2300, customMonthly: 709, customInstallment: 9388 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2100, customMonthly: 655, customInstallment: 8648 },
+    { brand: 'HONOR', model: 'ْX5c', ram: '4GB', rom: '128GB', priceSub: 5200, cash: 5900, downPayment: 1800, customMonthly: 554, customInstallment: 7335 },
+    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500, cash: 5100, downPayment: 1550, customMonthly: 479, customInstallment: 6343 },
 
-    { brand: 'VIVO', model: 'V60 5G', ram: '12GB', rom: '256GB', priceSub: 23000 },
-    { brand: 'VIVO', model: 'V60 Lite 5G', ram: '12GB', rom: '256GB', priceSub: 15700 },
-    { brand: 'VIVO', model: 'V60 Lite 4G', ram: '8GB', rom: '256GB', priceSub: 11600 },
-    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '256GB', priceSub: 8750 },
-    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '128GB', priceSub: 8000 },
-    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '256GB', priceSub: 8750 },
-    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '128GB', priceSub: 7500 },
-    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '256GB', priceSub: 7500 },
-    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '128GB', priceSub: 6250 },
-    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '128GB', priceSub: 5200 },
-    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '64GB', priceSub: 4550 },
-
-    { brand: 'REALME', model: '15 Pro 5G', ram: '12GB', rom: '256GB', priceSub: 24545 },
-    { brand: 'REALME', model: '15 5G', ram: '12GB', rom: '256GB', priceSub: 18181 },
-    { brand: 'REALME', model: 'C85 PRO', ram: '8GB', rom: '256GB', priceSub: 10908 },
-    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '128GB', priceSub: 7726 },
-    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '256GB', priceSub: 8635 },
-    { brand: 'REALME', model: 'C75X', ram: '6GB', rom: '128GB', priceSub: 6817 },
-    { brand: 'REALME', model: 'C75X', ram: '8GB', rom: '256GB', priceSub: 8181 },
-    { brand: 'REALME', model: 'C71', ram: '4GB', rom: '128GB', priceSub: 5999 },
-    { brand: 'REALME', model: 'C71', ram: '6GB', rom: '128GB', priceSub: 6363 },
-    { brand: 'REALME', model: 'Note 70', ram: '4GB', rom: '128GB', priceSub: 5454 },
-    { brand: 'REALME', model: 'Note 60x', ram: '4GB', rom: '128GB', priceSub: 4817 },
-    { brand: 'REALME', model: 'Note 60x', ram: '3GB', rom: '64GB', priceSub: 4181 },
-
-    { brand: 'Infinix', model: 'NOTE 50S 5G', ram: '16GB (8+8)', rom: '256GB', priceSub: 11500 },
-    { brand: 'Infinix', model: 'HOT 60 Pro+', ram: '16GB (8+8)', rom: '256GB', priceSub: 9900 },
-    { brand: 'Infinix', model: 'HOT 60 Pro', ram: '16GB (8+8)', rom: '256GB', priceSub: 8500 },
-    { brand: 'Infinix', model: 'HOT 60i', ram: '16GB (8+8)', rom: '256GB', priceSub: 6500 },
-    { brand: 'Infinix', model: 'HOT 60i', ram: '12GB (6+6)', rom: '128GB', priceSub: 5400 },
-    { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 4150 },
-    { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3650 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '512GB', priceSub: 14300, cash: 16000, downPayment: 4800, customMonthly: 1512, customInstallment: 19920 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '256GB', priceSub: 12800, cash: 14350, downPayment: 4300, customMonthly: 1357, customInstallment: 17868 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 9400, cash: 10550, downPayment: 3200, customMonthly: 992, customInstallment: 13123 },
+    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 8000, cash: 9000, downPayment: 2700, customMonthly: 851, customInstallment: 11205 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6650, cash: 7500, downPayment: 2250, customMonthly: 709, customInstallment: 9338 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2100, customMonthly: 655, customInstallment: 8648 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4850, cash: 5500, downPayment: 1650, customMonthly: 520, customInstallment: 6848 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4300, cash: 4900, downPayment: 1500, customMonthly: 459, customInstallment: 6090 }
 ];
-
-// حساب الكاش الابتدائي (سعر المورد + 10%)
-devices = devices.map(d => ({ ...d, cash: Math.round(d.priceSub * 1.1) }));
-
-let currentEditIndex = null;
-
-function toggleAdminCols() {
-    const body = document.body;
-    const btn = document.getElementById('toggleBtn');
-    body.classList.toggle('show-admin');
-    if (body.classList.contains('show-admin')) {
-        btn.innerText = "إخفاء وضع الإدارة";
-        btn.classList.replace('bg-purple-600', 'bg-red-600');
-    } else {
-        btn.innerText = "إظهار وضع الإدارة";
-        btn.classList.replace('bg-red-600', 'bg-purple-600');
-    }
+    /**
+ * دالة الحسابات التلقائية
+ * تحسب إجمالي القسط والقسط الشهري بناءً على الفائدة على المبلغ المتبقي
+ */
+function calculateAutoValues(device) {
+    // 1. تحديد سعر الكاش (يدوي أو مقترح بناءً على المورد + 10%)
+    const cash = device.cash || Math.round(device.priceSub * 1.1);
+    
+    // 2. تحديد المقدم (يدوي أو مقترح 35% من الكاش)
+    const down = device.downPayment || Math.round(cash * 0.35);
+    
+    // 3. حساب المبلغ المتبقي من الكاش
+    const remainingCash = cash - down;
+    
+    // 4. حساب إجمالي القسط (المتبقي * 1.35 لزيادة الفائدة 35% + المقدم)
+    // إذا لم يتم إدخال إجمالي قسط يدوي (customInstallment)
+    const totalInstallment = device.customInstallment || Math.round((remainingCash * 1.35) + down);
+    
+    // 5. حساب القسط الشهري (إجمالي القسط - المقدم) ÷ 10 شهور
+    // إذا لم يتم إدخال قسط شهري يدوي (customMonthly)
+    const monthly = device.customMonthly || Math.round((totalInstallment - down) / 10);
+    
+    // تعيد الدالة كائن يحتوي على كل البيانات النهائية للعرض
+    return {
+        ...device, // إرجاع كامل بيانات الموديل (Brand, Model, RAM, etc.)
+        cash: cash,
+        down: down,
+        totalInstallment: totalInstallment,
+        monthly: monthly
+    };
 }
 
-function calculateAutoValues(cashPrice, downPayment = null) {
-    if (!cashPrice) return { downPayment: 0, installmentPrice: 0, monthly: 0 };
-    if (downPayment === null) downPayment = Math.round(cashPrice * 0.3);
-    const remaining = cashPrice - downPayment;
-    const interest = remaining * 0.35;
-    const installmentPrice = Math.round(cashPrice + interest);
-    const monthly = Math.round((installmentPrice - downPayment) / 10);
-    return { downPayment, installmentPrice, monthly };
-}
-
+/**
+ * دالة عرض الجدول المحدثة لتعمل مع المنطق الجديد
+ */
 function renderTable() {
     const tbody = document.getElementById('tableBody');
     tbody.innerHTML = '';
     let currentBrand = '';
 
     devices.forEach((d, index) => {
-        if (d.brand !== currentBrand) {
-            currentBrand = d.brand;
+        // تشغيل منطق الحساب على الجهاز الحالي
+        const fullData = calculateAutoValues(d);
+
+        if (fullData.brand !== currentBrand) {
+            currentBrand = fullData.brand;
             const headerRow = document.createElement('tr');
             headerRow.className = 'brand-header text-white font-bold';
             headerRow.style.backgroundColor = brandColors[currentBrand] || '#1e40af';
@@ -230,92 +205,89 @@ function renderTable() {
             tbody.appendChild(headerRow);
         }
 
-        const auto = calculateAutoValues(d.cash, d.downPayment);
-        const finalInstallment = d.customInstallment || auto.installmentPrice;
-        const finalMonthly = d.customMonthly || auto.monthly;
-        const finalDown = d.downPayment || auto.downPayment;
-
         const row = document.createElement('tr');
         row.className = 'hover:bg-gray-50 border-b border-gray-100 transition';
         row.innerHTML = `
-            <td class="p-3 font-bold text-gray-800">${d.model}</td>
-            <td class="p-3 text-gray-600 text-sm">${d.ram} / ${d.rom}</td>
-            <td class="p-3 font-bold text-purple-700 admin-col">${d.priceSub.toLocaleString()}</td>
-            <td class="p-3 font-bold text-orange-600 no-print">${finalInstallment.toLocaleString()}</td>
-            <td class="p-3 font-bold text-green-700">${d.cash.toLocaleString()}</td>
-            <td class="p-3 font-bold text-blue-700">${finalDown.toLocaleString()}</td>
-            <td class="p-3 font-bold text-red-600">${finalMonthly.toLocaleString()}</td>
+            <td class="p-3 font-bold text-gray-800">${fullData.model}</td>
+            <td class="p-3 text-gray-600 text-sm">${fullData.ram} / ${fullData.rom}</td>
+            <td class="p-3 font-bold text-purple-700 admin-col">${fullData.priceSub.toLocaleString()}</td>
+            <td class="p-3 font-bold text-orange-600 no-print">${fullData.totalInstallment.toLocaleString()}</td>
+            <td class="p-3 font-bold text-green-700">${fullData.cash.toLocaleString()}</td>
+            <td class="p-3 font-bold text-blue-700">${fullData.down.toLocaleString()}</td>
+            <td class="p-3 font-bold text-red-600">${fullData.monthly.toLocaleString()}</td>
             <td class="p-3 admin-col">
-                <button onclick="openModal(${index})" class="bg-blue-50 text-blue-600 px-3 py-1 rounded border border-blue-200 hover:bg-blue-600 hover:text-white transition">تعديل</button>
+                <button onclick="openModal(${index})" class="bg-blue-50 text-blue-600 px-3 py-1 rounded border">تعديل</button>
             </td>
         `;
         tbody.appendChild(row);
     });
 }
 
-function openModal(index) {
-    currentEditIndex = index;
-    const device = devices[index];
-    const auto = calculateAutoValues(device.cash, device.downPayment);
-    
-    document.getElementById('modalDeviceName').innerText = `${device.brand} - ${device.model}`;
-    document.getElementById('modalPriceSubInput').value = device.priceSub;
-    document.getElementById('modalCashInput').value = device.cash;
-    document.getElementById('modalDownPaymentInput').value = device.downPayment || auto.downPayment;
-    document.getElementById('modalInstallmentInput').value = device.customInstallment || auto.installmentPrice;
-    document.getElementById('modalMonthlyInput').value = device.customMonthly || auto.monthly;
-    
-    document.getElementById('editModal').classList.replace('hidden', 'flex');
-}
-
-function closeModal() {
-    document.getElementById('editModal').classList.replace('flex', 'hidden');
-}
-
-function saveModal() {
-    devices[currentEditIndex].priceSub = Number(document.getElementById('modalPriceSubInput').value);
-    devices[currentEditIndex].cash = Number(document.getElementById('modalCashInput').value);
-    devices[currentEditIndex].downPayment = Number(document.getElementById('modalDownPaymentInput').value);
-    devices[currentEditIndex].customInstallment = Number(document.getElementById('modalInstallmentInput').value);
-    devices[currentEditIndex].customMonthly = Number(document.getElementById('modalMonthlyInput').value);
-    
-    // حفظ في ذاكرة المتصفح
-    localStorage.setItem('phonePrices', JSON.stringify(devices));
-    
-    renderTable();
-    closeModal();
-}
-
-// تحديث الحسابات عند تغيير سعر المورد أو سعر الكاش
-function handlePriceChange() {
+// دالة تحديث الحسابات في الـ Modal (تفاعل لحظي)
+function handlePriceChange(event) {
     const priceSub = Number(document.getElementById('modalPriceSubInput').value) || 0;
     
-    // إذا كان الحدث ناتج عن تغيير سعر المورد، نقوم بتحديث سعر الكاش تلقائياً (كقيمة مقترحة)
+    // تحديث سعر الكاش تلقائياً كقيمة مقترحة عند تغيير سعر المورد
     if(event.target.id === 'modalPriceSubInput') {
-        const cash = Math.round(priceSub * 1.1);
-        document.getElementById('modalCashInput').value = cash;
+        const suggestedCash = Math.round(priceSub * 1.1);
+        document.getElementById('modalCashInput').value = suggestedCash;
     }
 
     const currentCash = Number(document.getElementById('modalCashInput').value) || 0;
     const downPayment = Number(document.getElementById('modalDownPaymentInput').value) || 0;
     
-    // إعادة حساب القسط بناءً على سعر الكاش الحالي (سواء كان تلقائياً أو معدلاً يدوياً)
-    const auto = calculateAutoValues(currentCash, downPayment);
-    document.getElementById('modalInstallmentInput').value = auto.installmentPrice;
+    // إنشاء كائن مؤقت للحساب
+    const tempDevice = { cash: currentCash, downPayment: downPayment };
+    const auto = calculateAutoValues(tempDevice);
+    
+    document.getElementById('modalInstallmentInput').value = auto.totalInstallment;
     document.getElementById('modalMonthlyInput').value = auto.monthly;
 }
 
-document.getElementById('modalPriceSubInput').addEventListener('input', handlePriceChange);
-document.getElementById('modalCashInput').addEventListener('input', handlePriceChange);
-document.getElementById('modalDownPaymentInput').addEventListener('input', handlePriceChange);
+
+
+// إظهار/إخفاء وضع الإدارة
+function toggleAdminCols() {
+    document.body.classList.toggle('show-admin');
+}
+
+function openModal(index) {
+    currentEditIndex = index;
+    const d = devices[index];
+    const v = calculateAutoValues(d);
+    document.getElementById('modalDeviceName').innerText = d.model;
+    document.getElementById('modalPriceSubInput').value = d.priceSub;
+    document.getElementById('modalCashInput').value = v.cash;
+    document.getElementById('modalDownPaymentInput').value = v.down;
+    document.getElementById('modalMonthlyInput').value = v.monthly;
+    document.getElementById('modalInstallmentInput').value = v.totalInstallment;
+    document.getElementById('editModal').classList.replace('hidden', 'flex');
+}
+
+function closeModal() { document.getElementById('editModal').classList.replace('flex', 'hidden'); }
+
+function saveModal() {
+    const idx = currentEditIndex;
+    devices[idx].priceSub = Number(document.getElementById('modalPriceSubInput').value);
+    devices[idx].cash = Number(document.getElementById('modalCashInput').value);
+    devices[idx].downPayment = Number(document.getElementById('modalDownPaymentInput').value);
+    devices[idx].customMonthly = Number(document.getElementById('modalMonthlyInput').value);
+    devices[idx].customInstallment = Number(document.getElementById('modalInstallmentInput').value);
+    
+    localStorage.setItem('phonePrices', JSON.stringify(devices));
+    renderTable();
+    closeModal();
+}
 
 window.onload = () => {
-    const savedData = localStorage.getItem('phonePrices');
-    if (savedData) {
-        devices = JSON.parse(savedData);
-    }
+    const saved = localStorage.getItem('phonePrices');
+    if (saved) devices = JSON.parse(saved);
     renderTable();
 };
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+}
 </script>
 <script>
   if ('serviceWorker' in navigator) {
@@ -328,4 +300,5 @@ window.onload = () => {
 </script>
 </body>
 </html>
+
 
