@@ -220,7 +220,7 @@ function renderTable() {
     tbody.innerHTML = '';
     let currentBrand = '';
 
-    devices.sort((a, b) => a.brand.localeCompare(b.brand)).forEach((d, index) => {
+    devices.forEach((d, index) => {
         if (d.brand !== currentBrand) {
             currentBrand = d.brand;
             const headerRow = document.createElement('tr');
@@ -328,3 +328,4 @@ window.onload = () => {
 </script>
 </body>
 </html>
+
