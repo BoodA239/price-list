@@ -106,52 +106,88 @@ const brandColors = {
 };
 
 let devices = [
-    { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500, cash: 20500, downPayment: 6200, customMonthly: 1931, customInstallment: 25505 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000, cash: 17800, downPayment: 5400, customMonthly: 1674, customInstallment: 22140 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500, cash: 16200, downPayment: 4900, customMonthly: 1526, customInstallment: 20155 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700, cash: 14200, downPayment: 4300, customMonthly: 1337, customInstallment: 17665 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900, cash: 12200, downPayment: 3700, customMonthly: 1148, customInstallment: 15175 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325, cash: 10450, downPayment: 3200, customMonthly: 979, customInstallment: 12988 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800, cash: 8750, downPayment: 2650, customMonthly: 824, customInstallment: 10885 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '4GB', rom: '128GB', priceSub: 7250, cash: 8150, downPayment: 2450, customMonthly: 770, customInstallment: 10145 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '6GB', rom: '128GB', priceSub: 6700, cash: 7550, downPayment: 2300, customMonthly: 709, customInstallment: 9388 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '128GB', priceSub: 5700, cash: 6450, downPayment: 1950, customMonthly: 608, customInstallment: 8025 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '64GB', priceSub: 4950, cash: 5600, downPayment: 1700, customMonthly: 527, customInstallment: 6965 },
-    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 5450, cash: 6150, downPayment: 1850, customMonthly: 581, customInstallment: 7655 },
+    { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500, cash: 20500, downPayment: 7000, customMonthly: 1900, customInstallment: 26000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000, cash: 17800, downPayment: 6000, customMonthly: 1700, customInstallment: 2300 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500, cash: 16200, downPayment: 5500, customMonthly: 15000, customInstallment: 21000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700, cash: 14200, downPayment: 5000, customMonthly: 13000, customInstallment: 18000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900, cash: 12200, downPayment: 4500, customMonthly: 1200, customInstallment: 16000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325, cash: 10450, downPayment: 3500, customMonthly: 1000, customInstallment: 13500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800, cash: 8750, downPayment: 3000, customMonthly: 850, customInstallment: 11500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '4GB', rom: '128GB', priceSub: 7250, cash: 8150, downPayment: 3000, customMonthly: 700, customInstallment: 10500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '6GB', rom: '128GB', priceSub: 6700, cash: 7600, downPayment: 2500, customMonthly: 700, customInstallment: 10000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '128GB', priceSub: 5700, cash: 6450, downPayment: 2500, customMonthly: 600, customInstallment: 8500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '64GB', priceSub: 4950, cash: 5700, downPayment: 2000, customMonthly: 500, customInstallment: 7000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 5450, cash: 6150, downPayment: 2500, customMonthly: 600, customInstallment: 8500 },
 
     { brand: 'OPPO', model: 'Reno 15 5G', ram: '12GB', rom: '256GB', priceSub: 36000, cash: 39900, downPayment: 12000, customMonthly: 3767, customInstallment: 49665 },
-    { brand: 'OPPO', model: 'Reno 15F 5G', ram: '12GB', rom: '256GB', priceSub: 18150, cash: 20200, downPayment: 6100, customMonthly: 1904, customInstallment: 25135 },
-    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 17500, cash: 19500, downPayment: 5900, customMonthly: 1836, customInstallment: 24260 },
-    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 14450, cash: 16100, downPayment: 4850, customMonthly: 1519, customInstallment: 20038 },
-    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12650, cash: 14100, downPayment: 4250, customMonthly: 1330, customInstallment: 17548 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 9300, cash: 10450, downPayment: 3150, customMonthly: 986, customInstallment: 13005 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7725, cash: 8700, downPayment: 2650, customMonthly: 817, customInstallment: 10818 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6500, cash: 7350, downPayment: 2200, customMonthly: 695, customInstallment: 9153 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 5500, cash: 6250, downPayment: 1900, customMonthly: 587, customInstallment: 7773 },
-    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6375, cash: 7200, downPayment: 2150, customMonthly: 682, customInstallment: 8968 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6550, cash: 7400, downPayment: 2250, customMonthly: 695, customInstallment: 9203 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 5600, cash: 6350, downPayment: 1900, customMonthly: 601, customInstallment: 7908 },
+    { brand: 'OPPO', model: 'Reno 15F 5G', ram: '12GB', rom: '256GB', priceSub: 18150, cash: 20200, downPayment: 8000, customMonthly: 1904, customInstallment: 26000 },
+    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 17500, cash: 19500, downPayment: 7000, customMonthly: 1800, customInstallment: 25000 },
+    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 14450, cash: 16100, downPayment: 6000, customMonthly: 1400, customInstallment: 19500 },
+    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12650, cash: 14100, downPayment: 5000, customMonthly: 1300, customInstallment: 18000 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 9300, cash: 10450, downPayment: 3500, customMonthly: 1000, customInstallment: 13500 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7725, cash: 8700, downPayment: 3000, customMonthly: 850, customInstallment: 11500 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6500, cash: 7350, downPayment: 2500, customMonthly: 700, customInstallment: 9500 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 5500, cash: 6250, downPayment: 2000, customMonthly: 587, customInstallment: 8000 },
+    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6375, cash: 7200, downPayment: 2500, customMonthly: 700, customInstallment: 9500 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6550, cash: 7400, downPayment: 2500, customMonthly: 700, customInstallment: 9500 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 5600, cash: 6350, downPayment: 2000, customMonthly: 600, customInstallment: 8500 },
 
-    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18700, cash: 20800, downPayment: 6250, customMonthly: 1964, customInstallment: 25893 },
-    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 16150, cash: 18000, downPayment: 5400, customMonthly: 1701, customInstallment: 22410 },
-    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 11750, cash: 13100, downPayment: 3950, customMonthly: 1235, customInstallment: 16303 },
-    { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000, cash: 12300, downPayment: 3700, customMonthly: 1161, customInstallment: 15310 },
-    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800, cash: 11000, downPayment: 3300, customMonthly: 1040, customInstallment: 13695 },
-    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850, cash: 9950, downPayment: 3000, customMonthly: 938, customInstallment: 12383 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700, cash: 7550, downPayment: 2300, customMonthly: 709, customInstallment: 9388 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2100, customMonthly: 655, customInstallment: 8648 },
-    { brand: 'HONOR', model: 'ْX5c', ram: '4GB', rom: '128GB', priceSub: 5200, cash: 5900, downPayment: 1800, customMonthly: 554, customInstallment: 7335 },
-    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500, cash: 5100, downPayment: 1550, customMonthly: 479, customInstallment: 6343 },
+    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18700, cash: 20800, downPayment: 7000, customMonthly: 1964, customInstallment: 26500 },
+    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 16150, cash: 18000, downPayment: 6000, customMonthly: 1700, customInstallment: 23000 },
+    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 11750, cash: 13100, downPayment: 4500, customMonthly: 1300, customInstallment: 17500 },
+    { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000, cash: 12300, downPayment: 4000, customMonthly: 1250, customInstallment: 16500 },
+    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800, cash: 11000, downPayment: 3500, customMonthly: 1100, customInstallment: 14500 },
+    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850, cash: 9950, downPayment: 3000, customMonthly: 1000, customInstallment: 13000 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700, cash: 7600, downPayment: 2500, customMonthly: 7000, customInstallment: 1000 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2500, customMonthly: 650, customInstallment: 9000 },
+    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '128GB', priceSub: 5200, cash: 5900, downPayment: 2000, customMonthly: 550, customInstallment: 7500 },
+    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500, cash: 5100, downPayment: 1500, customMonthly: 450, customInstallment: 6500 },
 
-    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '512GB', priceSub: 14300, cash: 16000, downPayment: 4800, customMonthly: 1512, customInstallment: 19920 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '256GB', priceSub: 12800, cash: 14350, downPayment: 4300, customMonthly: 1357, customInstallment: 17868 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 9400, cash: 10550, downPayment: 3200, customMonthly: 992, customInstallment: 13123 },
-    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 8000, cash: 9000, downPayment: 2700, customMonthly: 851, customInstallment: 11205 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6650, cash: 7500, downPayment: 2250, customMonthly: 709, customInstallment: 9338 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2100, customMonthly: 655, customInstallment: 8648 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4850, cash: 5500, downPayment: 1650, customMonthly: 520, customInstallment: 6848 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4300, cash: 4900, downPayment: 1500, customMonthly: 459, customInstallment: 6090 }
-];
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '512GB', priceSub: 14300, cash: 16000, downPayment: 5500, customMonthly: 1512, customInstallment: 20000 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '256GB', priceSub: 12800, cash: 14350, downPayment: 5000, customMonthly: 1300, customInstallment: 18000 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 9400, cash: 10550, downPayment: 3500, customMonthly: 1000, customInstallment: 13500 },
+    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 8000, cash: 9000, downPayment: 3000, customMonthly: 900, customInstallment: 12000 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6650, cash: 7600, downPayment: 2500, customMonthly: 750, customInstallment: 1000 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2500, customMonthly: 750, customInstallment: 9000 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4850, cash: 5600, downPayment: 2000, customMonthly: 500, customInstallment: 7000 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4300, cash: 4900, downPayment: 1500, customMonthly: 459, customInstallment: 6500 }
+    
+    
+   // --- VIVO ---
+    { brand: 'VIVO', model: 'V60 5G', ram: '12GB', rom: '256GB', priceSub: 23000, cash: 25600, downPayment: 9000, customMonthly: 2200, customInstallment: 32000 },
+    { brand: 'VIVO', model: 'V60 Lite 5G', ram: '12GB', rom: '256GB', priceSub: 15700, cash: 17500, downPayment: 6000, customMonthly: 1800, customInstallment: 22500 },
+    { brand: 'VIVO', model: 'V60 Lite 4G', ram: '8GB', rom: '256GB', priceSub: 11600, cash: 12950, downPayment: 5000, customMonthly: 1100, customInstallment: 16500 },
+    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '256GB', priceSub: 8750, cash: 9800, downPayment: 3000, customMonthly: 1000, customInstallment: 13000 },
+    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '128GB', priceSub: 8000, cash: 9000, downPayment: 3000, customMonthly: 900, customInstallment: 12000 },
+    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '256GB', priceSub: 8750, cash: 9800, downPayment: 3000, customMonthly: 1000, customInstallment: 13000 },
+    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '128GB', priceSub: 7500, cash: 8450, downPayment: 3000, customMonthly: 850, customInstallment: 11000 },
+    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '256GB', priceSub: 7500, cash: 8450, downPayment: 3000, customMonthly: 850, customInstallment: 11000 },
+    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '128GB', priceSub: 6250, cash: 7050, downPayment: 2500, customMonthly: 650, customInstallment: 9000 },
+    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '128GB', priceSub: 5200, cash: 5900, downPayment: 2000, customMonthly: 600, customInstallment: 8000 },
+    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '64GB', priceSub: 4550, cash: 5150, downPayment: 1550, customMonthly: 550, customInstallment: 7000 },
+
+    // --- REALME ---
+    { brand: 'REALME', model: '15 Pro 5G', ram: '12GB', rom: '256GB', priceSub: 24545, cash: 27250, downPayment: 10000, customMonthly: 2500, customInstallment: 35000 },
+    { brand: 'REALME', model: '15 5G', ram: '12GB', rom: '256GB', priceSub: 18181, cash: 20250, downPayment: 8000, customMonthly: 1900, customInstallment: 26500 },
+    { brand: 'REALME', model: 'C85 PRO', ram: '8GB', rom: '256GB', priceSub: 10908, cash: 12250, downPayment: 5000, customMonthly: 1100, customInstallment: 16000 },
+    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '128GB', priceSub: 7726, cash: 8700, downPayment: 3000, customMonthly: 900, customInstallment: 12000 },
+    { brand: 'REALME', model: 'C75', ram: '8GB', rom: '256GB', priceSub: 8635, cash: 9700, downPayment: 3000, customMonthly: 1000, customInstallment: 13000 },
+    { brand: 'REALME', model: 'C75X', ram: '6GB', rom: '128GB', priceSub: 6817, cash: 7700, downPayment: 2500, customMonthly: 800, customInstallment: 10500 },
+    { brand: 'REALME', model: 'C75X', ram: '8GB', rom: '256GB', priceSub: 8181, cash: 9200, downPayment: 3000, customMonthly: 950, customInstallment: 12500 },
+    { brand: 'REALME', model: 'C71', ram: '4GB', rom: '128GB', priceSub: 5999, cash: 6800, downPayment: 2500, customMonthly: 650, customInstallment: 9000 },
+    { brand: 'REALME', model: 'C71', ram: '6GB', rom: '128GB', priceSub: 6363, cash: 7200, downPayment: 2500, customMonthly: 700, customInstallment: 9500 },
+    { brand: 'REALME', model: 'Note 70', ram: '4GB', rom: '128GB', priceSub: 5454, cash: 6200, downPayment: 2000, customMonthly: 600, customInstallment: 8000 },
+    { brand: 'REALME', model: 'Note 60x', ram: '4GB', rom: '128GB', priceSub: 4817, cash: 5450, downPayment: 2000, customMonthly: 500, customInstallment: 7000 },
+    { brand: 'REALME', model: 'Note 60x', ram: '3GB', rom: '64GB', priceSub: 4181, cash: 4750, downPayment: 1500, customMonthly: 500, customInstallment: 6500 },
+
+    // --- Infinix ---
+    { brand: 'Infinix', model: 'NOTE 50S 5G', ram: '16GB (8+8)', rom: '256GB', priceSub: 11500, cash: 12900, downPayment: 4000, customMonthly: 1250, customInstallment: 16500 },
+    { brand: 'Infinix', model: 'HOT 60 Pro+', ram: '16GB (8+8)', rom: '256GB', priceSub: 9900, cash: 11100, downPayment: 4000, customMonthly: 1150, customInstallment: 14500 },
+    { brand: 'Infinix', model: 'HOT 60 Pro', ram: '16GB (8+8)', rom: '256GB', priceSub: 8500, cash: 9550, downPayment: 3500, customMonthly: 900, customInstallment: 12500 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '16GB (8+8)', rom: '256GB', priceSub: 6500, cash: 7350, downPayment: 2500, customMonthly: 700, customInstallment: 9500 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '12GB (6+6)', rom: '128GB', priceSub: 5400, cash: 6100, downPayment: 2000, customMonthly: 600, customInstallment: 8000 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 4150, cash: 4700, downPayment: 1500, customMonthly: 500, customInstallment: 6500 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3650, cash: 4150, downPayment: 1500, customMonthly: 400, customInstallment: 5500 }
     /**
  * دالة الحسابات التلقائية
  * تحسب إجمالي القسط والقسط الشهري بناءً على الفائدة على المبلغ المتبقي
@@ -300,5 +336,6 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
 
 
