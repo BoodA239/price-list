@@ -107,81 +107,84 @@ const brandColors = {
 
 // البيانات الأولية (سعر المورد)
 let devices = [
-    { brand: 'SAMSUNG', model: 'Galaxy A36 5G', ram: '8GB', rom: '256GB', priceSub: 15410 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36 5G', ram: '6GB', rom: '128GB', priceSub: 15410 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26 4G', ram: '8GB', rom: '256GB', priceSub: 10436 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26 4G', ram: '6GB', rom: '128GB', priceSub: 10436 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '8GB', rom: '256GB', priceSub: 9363 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '6GB', rom: '128GB', priceSub: 9363 },
-    { brand: 'SAMSUNG', model: 'Galaxy A17 4G', ram: '4GB', rom: '128GB', priceSub: 9363 },
-    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 7564 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB/6GB', rom: '128GB', priceSub: 7873 },
-    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB/6GB', rom: '64GB', priceSub: 7873 },
-    { brand: 'OPPO', model: 'Reno 14 5G', ram: '12GB', rom: '256GB', priceSub: 24536 },
-    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 18445 },
-    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 13817 },
-    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12000 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 8627 },
-    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7363 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6091 },
-    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 6091 },
-    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6091 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6091 },
-    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 6091 },
-    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 15000 },
-    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 16461 },
-    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18455 },
-    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9500 },
-    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 7818 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 5773 },
-    { brand: 'HONOR', model: 'X7c', ram: '8GB', rom: '256GB', priceSub: 7682 },
-    { brand: 'HONOR', model: 'X8a / X8c', ram: '6/8GB', rom: '128/256GB', priceSub: 6982 },
-    { brand: 'HONOR', model: '500', ram: '12GB', rom: '256GB', priceSub: 17086 },
-    { brand: 'HONOR', model: '500 Pro', ram: '12GB', rom: '256GB', priceSub: 22932 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro+ 5G', ram: '12GB', rom: '256GB', priceSub: 19608 },
-    { brand: 'XIAOMI', model: 'Poco X7 Pro 5G', ram: '12GB', rom: '512GB', priceSub: 18080 },
-    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 8908 },
-    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 7678 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6566 },
-    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 5818 },
-    { brand: 'XIAOMI', model: 'Redmi 13/14C', ram: '8GB', rom: '128GB', priceSub: 6243 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4815 },
-    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4305 },
-    { brand: 'VIVO', model: 'Y03', ram: '4GB', rom: '64GB', priceSub: 3999 },
-    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '128GB', priceSub: 4927 },
-    { brand: 'VIVO', model: 'Y19s', ram: '6GB', rom: '128GB', priceSub: 6545 },
-    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '256GB', priceSub: 7718 },
-    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '256GB', priceSub: 8173 },
-    { brand: 'VIVO', model: 'V40 Lite 4G', ram: '8GB', rom: '256GB', priceSub: 13131 },
-    { brand: 'VIVO', model: 'V50 Lite 4G', ram: '8GB', rom: '128GB', priceSub: 9817 },
-    { brand: 'VIVO', model: 'V50 Lite 5G', ram: '12GB', rom: '256GB', priceSub: 14536 },
-    { brand: 'VIVO', model: 'V50 AI 5G', ram: '12GB', rom: '256GB', priceSub: 22185 },
-    { brand: 'VIVO', model: 'V60 5G', ram: '12GB', rom: '512GB', priceSub: 23090 },
-    { brand: 'REALME', model: 'Note 60x', ram: '3GB', rom: '64GB', priceSub: 4181 },
-    { brand: 'REALME', model: 'Note 60x', ram: '4GB', rom: '128GB', priceSub: 4817 },
-    { brand: 'REALME', model: 'Note 70', ram: '4GB', rom: '128GB', priceSub: 5454 },
-    { brand: 'REALME', model: 'C71', ram: '4GB', rom: '128GB', priceSub: 5999 },
-    { brand: 'REALME', model: 'C71', ram: '6GB', rom: '128GB', priceSub: 6363 },
+    { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800 },
+    { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '4GB', rom: '128GB', priceSub: 7250 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '6GB', rom: '128GB', priceSub: 6700 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '128GB', priceSub: 5700 },
+    { brand: 'SAMSUNG', model: 'Galaxy A07', ram: '4GB', rom: '64GB', priceSub: 4950 },
+    { brand: 'SAMSUNG', model: 'Galaxy A05s', ram: '4GB', rom: '128GB', priceSub: 5450 },
+    
+    { brand: 'OPPO', model: 'Reno 15 5G', ram: '12GB', rom: '256GB', priceSub: 36000 },
+    { brand: 'OPPO', model: 'Reno 15F 5G', ram: '12GB', rom: '256GB', priceSub: 18150 },
+    { brand: 'OPPO', model: 'Reno 14F 5G', ram: '12GB', rom: '256GB', priceSub: 17500 },
+    { brand: 'OPPO', model: 'A6 Pro 5G', ram: '8GB', rom: '256GB', priceSub: 14450 },
+    { brand: 'OPPO', model: 'A6 Pro 4G', ram: '8GB', rom: '256GB', priceSub: 12650 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '8GB', rom: '256GB', priceSub: 9300 },
+    { brand: 'OPPO', model: 'A5 4G', ram: '6GB', rom: '128GB', priceSub: 7725 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '128GB', priceSub: 6500 },
+    { brand: 'OPPO', model: 'A6x', ram: '4GB', rom: '64GB', priceSub: 5500 },
+    { brand: 'OPPO', model: 'A5x', ram: '4GB', rom: '128GB', priceSub: 6375 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '128GB', priceSub: 6550 },
+    { brand: 'OPPO', model: 'A5i', ram: '4GB', rom: '64GB', priceSub: 5600 },
+
+    { brand: 'HONOR', model: '400 (12/256)', ram: '12GB', rom: '256GB', priceSub: 18700 },
+    { brand: 'HONOR', model: 'X9d 5G', ram: '12GB', rom: '256GB', priceSub: 16150 },
+    { brand: 'HONOR', model: '400 Lite', ram: '8GB', rom: '256GB', priceSub: 11750 },
+    { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000 },
+    { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800 },
+    { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150 },
+    { brand: 'HONOR', model: 'ْX5c', ram: '4GB', rom: '128GB', priceSub: 5200 },
+    { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500 },
+
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '512GB', priceSub: 14300 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 Pro 4G', ram: '12GB', rom: '256GB', priceSub: 12800 },
+    { brand: 'XIAOMI', model: 'Redmi Note 14 4G', ram: '8GB', rom: '256GB', priceSub: 9400 },
+    { brand: 'XIAOMI', model: 'Redmi 15 4G', ram: '8GB', rom: '256GB', priceSub: 8000 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '8GB', rom: '256GB', priceSub: 6650 },
+    { brand: 'XIAOMI', model: 'Redmi 15C 4G', ram: '6GB', rom: '128GB', priceSub: 6150 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '128GB', priceSub: 4850 },
+    { brand: 'XIAOMI', model: 'Redmi A5', ram: '4GB', rom: '64GB', priceSub: 4300 },
+
+    { brand: 'VIVO', model: 'V60 5G', ram: '12GB', rom: '256GB', priceSub: 23000 },
+    { brand: 'VIVO', model: 'V60 Lite 5G', ram: '12GB', rom: '256GB', priceSub: 15700 },
+    { brand: 'VIVO', model: 'V60 Lite 4G', ram: '8GB', rom: '256GB', priceSub: 11600 },
+    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '256GB', priceSub: 8750 },
+    { brand: 'VIVO', model: 'Y29', ram: '8GB', rom: '128GB', priceSub: 8000 },
+    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '256GB', priceSub: 8750 },
+    { brand: 'VIVO', model: 'Y21d', ram: '6GB', rom: '128GB', priceSub: 7500 },
+    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '256GB', priceSub: 7500 },
+    { brand: 'VIVO', model: 'Y19s pro', ram: '6GB', rom: '128GB', priceSub: 6250 },
+    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '128GB', priceSub: 5200 },
+    { brand: 'VIVO', model: 'Y04', ram: '4GB', rom: '64GB', priceSub: 4550 },
+
+    { brand: 'REALME', model: '15 Pro 5G', ram: '12GB', rom: '256GB', priceSub: 24545 },
+    { brand: 'REALME', model: '15 5G', ram: '12GB', rom: '256GB', priceSub: 18181 },
+    { brand: 'REALME', model: 'C85 PRO', ram: '8GB', rom: '256GB', priceSub: 10908 },
     { brand: 'REALME', model: 'C75', ram: '8GB', rom: '128GB', priceSub: 7726 },
     { brand: 'REALME', model: 'C75', ram: '8GB', rom: '256GB', priceSub: 8635 },
     { brand: 'REALME', model: 'C75X', ram: '6GB', rom: '128GB', priceSub: 6817 },
     { brand: 'REALME', model: 'C75X', ram: '8GB', rom: '256GB', priceSub: 8181 },
-    { brand: 'REALME', model: 'C85 PRO', ram: '8GB', rom: '256GB', priceSub: 10908 },
-    { brand: 'REALME', model: '14t 5G', ram: '8GB', rom: '256GB', priceSub: 12726 },
-    { brand: 'REALME', model: '14 5G', ram: '12GB', rom: '256GB', priceSub: 16363 },
-    { brand: 'REALME', model: '15t 5G', ram: '8GB', rom: '256GB', priceSub: 13272 },
-    { brand: 'REALME', model: '15t 5G', ram: '12GB', rom: '256GB', priceSub: 15090 },
-    { brand: 'REALME', model: '15 5G', ram: '12GB', rom: '256GB', priceSub: 18181 },
-    { brand: 'REALME', model: '15 Pro 5G', ram: '12GB', rom: '256GB', priceSub: 24545 },
-    { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3150 },
-    { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 3568 },
-    { brand: 'Infinix', model: 'HOT 60i', ram: '12GB (6+6)', rom: '128GB', priceSub: 4545 },
-    { brand: 'Infinix', model: 'HOT 60i', ram: '16GB (8+8)', rom: '256GB', priceSub: 5409 },
-    { brand: 'Infinix', model: 'HOT 60 5G', ram: '12GB (6+6)', rom: '128GB', priceSub: 6091 },
-    { brand: 'Infinix', model: 'HOT 60 Pro', ram: '16GB (8+8)', rom: '256GB', priceSub: 7441 },
-    { brand: 'Infinix', model: 'HOT 60 Pro+', ram: '16GB (8+8)', rom: '256GB', priceSub: 8864 },
-    { brand: 'Infinix', model: 'NOTE 50S 5G', ram: '16GB (8+8)', rom: '256GB', priceSub: 10573 },
-    { brand: 'Infinix', model: 'GT 30 PRO', ram: '24GB (12+12)', rom: '512GB', priceSub: 15923 }
+    { brand: 'REALME', model: 'C71', ram: '4GB', rom: '128GB', priceSub: 5999 },
+    { brand: 'REALME', model: 'C71', ram: '6GB', rom: '128GB', priceSub: 6363 },
+    { brand: 'REALME', model: 'Note 70', ram: '4GB', rom: '128GB', priceSub: 5454 },
+    { brand: 'REALME', model: 'Note 60x', ram: '4GB', rom: '128GB', priceSub: 4817 },
+    { brand: 'REALME', model: 'Note 60x', ram: '3GB', rom: '64GB', priceSub: 4181 },
+
+    { brand: 'Infinix', model: 'NOTE 50S 5G', ram: '16GB (8+8)', rom: '256GB', priceSub: 11500 },
+    { brand: 'Infinix', model: 'HOT 60 Pro+', ram: '16GB (8+8)', rom: '256GB', priceSub: 9900 },
+    { brand: 'Infinix', model: 'HOT 60 Pro', ram: '16GB (8+8)', rom: '256GB', priceSub: 8500 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '16GB (8+8)', rom: '256GB', priceSub: 6500 },
+    { brand: 'Infinix', model: 'HOT 60i', ram: '12GB (6+6)', rom: '128GB', priceSub: 5400 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '8GB (4+4)', rom: '128GB', priceSub: 4150 },
+    { brand: 'Infinix', model: 'SMART 10', ram: '6GB (3+3)', rom: '64GB', priceSub: 3650 },
 ];
 
 // حساب الكاش الابتدائي (سعر المورد + 10%)
@@ -271,10 +274,13 @@ function closeModal() {
 
 function saveModal() {
     devices[currentEditIndex].priceSub = Number(document.getElementById('modalPriceSubInput').value);
-    devices[currentEditIndex].cash = Number(document.getElementById('modalCashInput').value); // حفظ السعر المدخل يدوياً
+    devices[currentEditIndex].cash = Number(document.getElementById('modalCashInput').value);
     devices[currentEditIndex].downPayment = Number(document.getElementById('modalDownPaymentInput').value);
     devices[currentEditIndex].customInstallment = Number(document.getElementById('modalInstallmentInput').value);
     devices[currentEditIndex].customMonthly = Number(document.getElementById('modalMonthlyInput').value);
+    
+    // حفظ في ذاكرة المتصفح
+    localStorage.setItem('phonePrices', JSON.stringify(devices));
     
     renderTable();
     closeModal();
@@ -303,7 +309,22 @@ document.getElementById('modalPriceSubInput').addEventListener('input', handlePr
 document.getElementById('modalCashInput').addEventListener('input', handlePriceChange);
 document.getElementById('modalDownPaymentInput').addEventListener('input', handlePriceChange);
 
-window.onload = renderTable;
+window.onload = () => {
+    const savedData = localStorage.getItem('phonePrices');
+    if (savedData) {
+        devices = JSON.parse(savedData);
+    }
+    renderTable();
+};
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker Registered'))
+        .catch(err => console.log('Service Worker Failed', err));
+    });
+  }
 </script>
 </body>
 </html>
