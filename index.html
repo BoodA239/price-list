@@ -108,8 +108,8 @@ const brandColors = {
 let devices = [
     { brand: 'SAMSUNG', model: 'Galaxy A56', ram: '12GB', rom: '256GB', priceSub: 18500, cash: 20500, downPayment: 7000, customMonthly: 1900, customInstallment: 26000 },
     { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '256GB', priceSub: 16000, cash: 17800, downPayment: 6000, customMonthly: 1700, customInstallment: 2300 },
-    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500, cash: 16200, downPayment: 5500, customMonthly: 15000, customInstallment: 21000 },
-    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700, cash: 14200, downPayment: 5000, customMonthly: 13000, customInstallment: 18000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A36', ram: '8GB', rom: '128GB', priceSub: 14500, cash: 16200, downPayment: 5500, customMonthly: 1500, customInstallment: 21000 },
+    { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '8GB', rom: '256GB', priceSub: 12700, cash: 14200, downPayment: 5000, customMonthly: 1300, customInstallment: 18000 },
     { brand: 'SAMSUNG', model: 'Galaxy A26', ram: '6GB', rom: '128GB', priceSub: 10900, cash: 12200, downPayment: 4500, customMonthly: 1200, customInstallment: 16000 },
     { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '8GB', rom: '256GB', priceSub: 9325, cash: 10450, downPayment: 3500, customMonthly: 1000, customInstallment: 13500 },
     { brand: 'SAMSUNG', model: 'Galaxy A17', ram: '6GB', rom: '128GB', priceSub: 7800, cash: 8750, downPayment: 3000, customMonthly: 850, customInstallment: 11500 },
@@ -138,7 +138,7 @@ let devices = [
     { brand: 'HONOR', model: 'X8c', ram: '8GB', rom: '256GB', priceSub: 11000, cash: 12300, downPayment: 4000, customMonthly: 1250, customInstallment: 16500 },
     { brand: 'HONOR', model: 'X7d 5G', ram: '8GB', rom: '256GB', priceSub: 9800, cash: 11000, downPayment: 3500, customMonthly: 1100, customInstallment: 14500 },
     { brand: 'HONOR', model: 'X7d 4G', ram: '8GB', rom: '256GB', priceSub: 8850, cash: 9950, downPayment: 3000, customMonthly: 1000, customInstallment: 13000 },
-    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700, cash: 7600, downPayment: 2500, customMonthly: 7000, customInstallment: 1000 },
+    { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '256GB', priceSub: 6700, cash: 7600, downPayment: 2500, customMonthly: 1000, customInstallment: 10000 },
     { brand: 'HONOR', model: 'X6c', ram: '6GB', rom: '128GB', priceSub: 6150, cash: 6950, downPayment: 2500, customMonthly: 650, customInstallment: 9000 },
     { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '128GB', priceSub: 5200, cash: 5900, downPayment: 2000, customMonthly: 550, customInstallment: 7500 },
     { brand: 'HONOR', model: 'X5c', ram: '4GB', rom: '64GB', priceSub: 4500, cash: 5100, downPayment: 1500, customMonthly: 450, customInstallment: 6500 },
@@ -320,9 +320,7 @@ window.onload = () => {
     renderTable();
 };
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
-}
+
 </script>
 <script>
   if ('serviceWorker' in navigator) {
@@ -335,6 +333,7 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
 
 
 
